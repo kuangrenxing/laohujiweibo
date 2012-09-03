@@ -33,47 +33,9 @@ class IndexController extends Controller
 	public function indexAction()
 	{
 		header("content-type:text/html;charset=utf-8");
-		
-		$this->config['layoutEnabled'] = false;
-		/* //$signed	 = $this->getParam("signed_request");
-		
-		//处理微博Oauth
 		header('P3P:CP=CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR');
 		
-
-		session_start();
-		
-
-		
-		if($_SESSION['openid']=='' || $_SESSION['openkey']=='')
-		{
-			$_SESSION['openid']=$_GET['openid'];
-			$_SESSION['openkey']=$_GET['openkey'];
-		}	
-		//print_r($_SESSION);	
-		
-		// 应用基本信息
-		$appid = APP_ID;
-		$appkey = APP_KEY;
-		
-		// OpenAPI的服务器IP
-		// 最新的API服务器地址请参考wiki文档: http://wiki.open.qq.com/wiki/API3.0%E6%96%87%E6%A1%A3
-		$server_name = 'openapi.tencentyun.com';		
-		
-		
-		// 用户的OpenID/OpenKey
-		$openid = $_SESSION['openid'];
-		$openkey = $_SESSION['openkey'];
-		
-		
-		// 所要访问的平台, pf的其他取值参考wiki文档: http://wiki.open.qq.com/wiki/API3.0%E6%96%87%E6%A1%A3
-		$pf = 'qzone';
-		
-		
-		$sdk = new OpenApiV3($appid, $appkey);
-		$sdk->setServerName($server_name);
-		
-		$ret = $this->get_user_info(&$sdk, $openid, $openkey, $pf); */
+		$this->config['layoutEnabled'] = false;
 		
 		$client_id = CLIENT_ID;
 		$client_secret = CLIENT_SECRET;
@@ -86,27 +48,14 @@ class IndexController extends Controller
 		header('Content-Type: text/html; charset=utf-8');
 		
 		if (isset($_SESSION['t_access_token']) || ($_SESSION['t_openid'] && $_SESSION['t_openkey'])) {//用户已授权
-// 			echo '<pre><h3>已授权</h3>用户信息：<br>';
+
 			//获取用户信息
 			$r = Tencent::api('user/info');
 			
 			$ret = json_decode($r, true);
-// 			echo '</pre>';
-// 			print_r($ret['data']);
-
-
 
 			$_SESSION['userinfo']=$ret['data'];
-			$_SESSION['userinfo']['id']=$ret['data']['openid'];
-			
-			
-			
-			////////////////////
-			
-// 			$xmlUrl = "common/LocList.xml"; // XML feed file/URL
-// 			echo $this->getState($xmlUrl,34);
-// 			echo "OK";
-// 			exit;
+			$_SESSION['userinfo']['id']=$ret['data']['openid'];			
 			
 			$star = array(
 					'1' =>'双鱼座',

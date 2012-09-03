@@ -91,9 +91,7 @@ class LastController extends Controller
 		}
 
 		$this->view->userinfo=$_SESSION['userinfo'];
-		
-		
-		
+
 		
 	}
 	
