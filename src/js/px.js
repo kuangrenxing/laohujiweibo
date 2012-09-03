@@ -23,7 +23,7 @@ function checkName(){
 
 function timeout(){
 	
-	
+
 	setTimeout(function(){
 		$("#play").css("background","url(http://www.tuolar.com/apps/sinala/src/img/star.png)");
 		$("#add").stopTime();
@@ -35,8 +35,11 @@ function timeout(){
 		$("#img4").attr('src',$("#prodpic4").val());
 		$("#px").attr('src',$("#pximg").val());
 		
+		$("#pic").val($("#px").attr("src"));
+		
+		
 		$("#pxForm").submit();
-	}, 10000);
+	}, 1000);
 	$("#J_flag").val("0");
 	
 }
@@ -59,6 +62,8 @@ $(document).ready(function() {
 		if(checkName()==false){			
 		}else{			
 		
+		$("#J_flag").val("1");
+				
 		$(this).css("background","url(http://www.tuolar.com/apps/sinala/src/img/stop.png)");
 		var ids=[],px=[],itema=[],itemb=[],itemc=[],itemd=[],yyu=[],pyu=[],pxid=[],itemida=[],itemidb=[],itemidc=[],itemidd=[];
 		var tl_len = 0,tl_k = 0;
@@ -94,7 +99,7 @@ $(document).ready(function() {
 			tl_k ++;
 			if(tl_k > tl_len) tl_k = 0;
 		});
-		setTimeout(timeout(),1000);
+		setTimeout("timeout()",3000);
 		
 	}
 	

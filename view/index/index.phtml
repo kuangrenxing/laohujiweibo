@@ -45,13 +45,13 @@ var prodd_src = prodD[tl_ii];var proddimg = new Image();proddimg.src = prodd_src
 
 <div id="wappper" class="cbody pngFix">
 	<div id="wrap" class="clearfix">
-	<form action="<?php echo APP_qzone_URL;?>next.php" method="post" name="pxForm" id="pxForm">
+	<form action="<?php echo APP_qzone_URL;?>last.php" method="post" name="pxForm" id="pxForm">
     	<h2 class="titH2">输入他的名字，选择你的星座，看看今晚的艳遇指数！</h2>
         <!--星座选择-->
         <div id="myForm">
         	<ul class="clearfix">
         	<input type="hidden" name="J_flag" id="J_flag" value="0"/>
-            	<li><label>他的名字</label><input type="text" class="nInput" name="pname" id="pname" /></li>
+            	
                 <li>
                 	<label>星座</label>
                     <dl>
@@ -65,6 +65,7 @@ var prodd_src = prodD[tl_ii];var proddimg = new Image();proddimg.src = prodd_src
                     	?>
                     </dl>
                 </li>
+                <li><label>他的名字</label><input type="text" class="nInput" name="pname" id="pname" /></li>
             </ul>
         </div><!--星座选择-->
         
@@ -94,6 +95,8 @@ var prodd_src = prodD[tl_ii];var proddimg = new Image();proddimg.src = prodd_src
             	<input type="hidden" id="prodpic3" value="<?php echo APP_DOMAIN.$this->show['itempic3'];?>" />
             	<input type="hidden" id="prodpic4" value="<?php echo APP_DOMAIN.$this->show['itempic4'];?>" />
             	<input type="hidden" name="wbauth" value="<?php echo $this->auth;?>" />
+            	<input type="hidden" name="pic" id="pic" value="" />
+                
                 <span>艳遇<br />鉴定书</span><textarea class="pngFix" name="pyu" id="pyu"></textarea>
             </div>
         </div>

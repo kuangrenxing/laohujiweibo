@@ -99,8 +99,7 @@ class IndexController extends Controller
 			$_SESSION['userinfo']=$ret['data'];
 			$_SESSION['userinfo']['id']=$ret['data']['openid'];
 			
-// 			print_r($_SESSION);	
-// 			exit;
+			
 			
 			////////////////////
 			
@@ -140,7 +139,7 @@ class IndexController extends Controller
 			$this->view->data = $change;			
 			$this->view->auth = serialize($_SESSION);			
 			$uid=$this->regUser($_SESSION['userinfo']);
-			
+			$_SESSION['userinfo']['uid'] = $uid;
 			
 		} else {//未授权
 			$callback = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];//回调url
@@ -242,7 +241,8 @@ class IndexController extends Controller
 			$headImg_36 = GetImage($newUser['head_pic'] , $imgUrl_36 , 1);
 			$headImgUrl = substr($headImg , 4);
 	
-			
+			$newUser['head_pic'] = str_replace('../.', '', $imgUrl);
+			$_SESSION['head_pic'] = $newUser['head_pic'];
 			$uid = $userID  = $this->user->add($newUser , true);
 			
 			
@@ -266,7 +266,8 @@ class IndexController extends Controller
 			$uid = $userInfo['id'];
 			$stgle = $userInfo['stgle'];
 			$headImgUrl = $userInfo['head_pic'];
-	
+			
+			$_SESSION['head_pic'] = $userInfo['head_pic'];
 			
 			$conn['type'] 	= CONNECT_TYPE_QQ;
 			$conn['uid'] 	= $uid;

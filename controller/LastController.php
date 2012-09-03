@@ -35,6 +35,7 @@ class LastController extends Controller
 		
 		$app 	 = $this->getIntParam('appid');
 		$pyu 	 = $this->getParam('pyu');//内容
+		
 		$appInfo = $this->sinapx->getRow($app);
 		$follow  = $this->getParam('followtl');
 		$totl 	 = $this->getParam('totuolar');
@@ -64,16 +65,21 @@ class LastController extends Controller
 			$r = Tencent::api('t/add_pic_url', $params, 'POST');
 			
 		}
+		else 
+		{
+			$this->redirectToController("index");
+		}
 		
-		if ($totl && $totl == 1)
+// 		if ($totl && $totl == 1)
+		if(true)//默认是在tuolar.com中发微博
 		{
 			
 			$post=array();
 			
 			$post['px_id'] = $appInfo['pxid'];
-			$post['username'] = $_SESSION['userinfo']['nick'];
-			$post['uid'] = 0;
-			$post['head_pic'] = $_SESSION['userinfo']['head'].'/120';
+// 			$post['username'] = $_SESSION['userinfo']['nick'];
+			$post['uid'] = $_SESSION['userinfo']['uid'];
+// 			$post['head_pic'] = $_SESSION['userinfo']['head'].'/120';
 			$post['comment'] = $pyu;
 			$post['time_created'] = time();
 				//发拖拉微博
@@ -85,6 +91,9 @@ class LastController extends Controller
 		}
 
 		$this->view->userinfo=$_SESSION['userinfo'];
+		
+		
+		
 		
 	}
 	
