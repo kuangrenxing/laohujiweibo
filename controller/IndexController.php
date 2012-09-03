@@ -86,7 +86,7 @@ class IndexController extends Controller
 			}
 			$this->view->show = $show;
 			$this->view->data = $change;			
-			$this->view->auth = serialize($_SESSION);			
+			//$this->view->auth = serialize($_SESSION);			
 			$uid=$this->regUser($_SESSION['userinfo']);
 			$_SESSION['userinfo']['uid'] = $uid;
 			
